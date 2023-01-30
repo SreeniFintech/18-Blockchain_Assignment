@@ -49,9 +49,9 @@ import hashlib
 # @TODO
 # Create a Record Data Class that consists of the `sender`, `receiver`, and
 # `amount` attributes
-# YOUR CODE HERE
+
 @dataclass
-class Record:
+class record:
     sender: str
     receiver: str
     amount: float
@@ -72,14 +72,14 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-    def init(self, record: Record, creator_id: int, prev_hash: str = "0", timestamp: str = None, nonce: int = 0):
-        self.record = record
-        self.creator_id = creator_id
-        self.prev_hash = prev_hash if prev_hash else "0"
-        self.timestamp = timestamp if timestamp else datetime.datetime.utcnow().strftime("%H:%M:%S")
-        self.nonce = nonce
+    data: record
 
-    
+    creator_id: int
+    prev_hash: str = "0"
+    timestamp: str = datetime.datetime.utcnow().strftime("%H:%M:%S")
+    nonce: int = 0
+
+   
     def hash_block(self):
         sha = hashlib.sha256()
 
