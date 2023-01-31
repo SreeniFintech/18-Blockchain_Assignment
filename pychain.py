@@ -38,7 +38,7 @@ import hashlib
 # formalized data structure that consists of the `sender`, `receiver`, and
 # `amount` attributes. To do so, complete the following steps:
 # 1. Define a new class named `Record`.
-# 2. Add the `@dataclass` decorator immediately before the `Record` class
+# 2. Add the `@dataclass` decorator immediately before the `Record` class======
 # definition.
 # 3. Add an attribute named `sender` of type `str`.
 # 4. Add an attribute named `receiver` of type `str`.
@@ -51,7 +51,7 @@ import hashlib
 # `amount` attributes
 
 @dataclass
-class record:
+class Record:
     sender: str
     receiver: str
     amount: float
@@ -72,7 +72,7 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-    data: record
+    record: Record
 
     creator_id: int
     prev_hash: str = "0"
@@ -193,8 +193,9 @@ if st.button("Add Block"):
     # Update `new_block` so that `Block` consists of an attribute named `record`
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
-    record = Record(sender, reciever, amount)
-    new_block = Block(record, len(pychain.chain), prev_block_hash)
+    
+
+    new_block = Block(record=Record(sender, receiver, amount), creator_id = 42, prev_hash = prev_block_hash )
         
     pychain.add_block(new_block)
     st.balloons()
